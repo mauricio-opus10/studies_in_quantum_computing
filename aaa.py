@@ -1,10 +1,9 @@
-# Simulando um Estado de Bell
+#Simulando um Estado de Bell
 
 from qiskit import QuantumCircuit, transpile
 from qiskit.visualization import plot_histogram
-from qiskit.providers.aer import AerSimulator
+from qiskit.providers.aer import AerSimulator  
 import matplotlib.pyplot as plt
-
 
 def quantum_bell_state():
     """
@@ -17,10 +16,10 @@ def quantum_bell_state():
     qc = QuantumCircuit(2, 2)
 
     # Aplicação da porta Hadamard para criar superposição.
-    qc.h(0)
+    qc.h(0)  
 
     # Aplicação da porta CNOT para emaranhar os qubits.
-    qc.cx(0, 1)
+    qc.cx(0, 1)  
 
     # Medida dos qubits
     qc.measure([0, 1], [0, 1])
@@ -29,10 +28,10 @@ def quantum_bell_state():
     print(qc.draw(output="text"))
 
     # Configuração do simulador quântico
-    backend = AerSimulator()
+    backend = AerSimulator()  
     compiled_circuit = transpile(qc, backend)
-    result = backend.run(compiled_circuit, shots=1024).result()
-    counts = result.get_counts()
+    result = backend.run(compiled_circuit, shots=1024).result() 
+    counts = result.get_counts() 
 
     # Exibe os resultados
     print("\n🔹 Resultados da Simulação:")
@@ -42,6 +41,6 @@ def quantum_bell_state():
     plot_histogram(counts)
     plt.show()
 
-
 # Rodando a simulação
 quantum_bell_state()
+
